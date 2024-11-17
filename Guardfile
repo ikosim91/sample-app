@@ -46,8 +46,7 @@ guard :minitest, all_on_start: false do
       ['test/integration/microposts_interface_test.rb']
   end
   watch('app/controllers/relationships_controller.rb') do
-    ['test/controllers/relationships_controller_test.rb',
-     'test/integration/following_test.rb']
+    %w[test/controllers/relationships_controller_test.rb test/integration/following_test.rb]
   end
 end
 
@@ -56,7 +55,7 @@ def integration_tests(resource = :all)
   if resource == :all
     Dir['test/integration/*']
   else
-    Dir['test/integration/#{resource}_*.rb']
+    Dir["test/integration/#{resource}_*.rb"]
   end
 end
 
@@ -67,7 +66,7 @@ end
 
 # Returns the controller tests corresponding to the given resource.
 def controller_test(resource)
-  'test/controllers/#{resource}_controller_test.rb'
+  "test/controllers/#{resource}_controller_test.rb"
 end
 
 # Returns all tests for the given resource.
